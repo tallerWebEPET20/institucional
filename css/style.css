@@ -1,6 +1,12 @@
 /* https://paletasdecolores.com/paleta-de-colores-2326/ */
 :root{
-  --blue: #007bff;
+  --dark: #091d36;
+  --blueDark: #3a4e7a;
+  --blue:#5e83ba;
+  --c:#c2d2e9;
+  --white: #f1f1f0;
+  
+
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -10,7 +16,6 @@
   --green: #28a745;
   --teal: #20c997;
   --cyan: #17a2b8;
-  --white: #f1f1f0;
   --gray: #6c757d;
   --gray-dark: #343a40;
   --primary: #007bff;
@@ -20,16 +25,13 @@
   --warning: #ffc107;
   --danger: #dc3545;
   --light: #f8f9fa;
-  --dark: #343a40;
-  --b:#f1f1f0;
-  --footer:#5e83ba;
   --cyanPastel:#2BF2F5;
-  --c:#BFE9FF;
+  
   --font:#091d36;
   --font-show:#3F7896;
   --danger2:#FF0000;
   --main-white-color: white;
---main-black-color: black;
+  --main-black-color: black;
 }
 
 * {
@@ -131,7 +133,7 @@ color: var(--cyan);
 }
 
 .n-color{
-color: var(--b);
+color: var(--white);
 }
 
 .n-color:hover{
@@ -139,7 +141,7 @@ color: var(--c);
 }
 
 .espacio{
-  background-color: var(--b);
+  background-color: var(--white);
 }
 
 
@@ -150,12 +152,12 @@ color: var(--c);
 }
 
 .navbar-expand-lg{
-  background-color: var(--dark);
+  background-color: var(--blue);
   padding: 12px;
 }
 
 .navbar{
-  background-color: var(--font);
+  background-color: var(--dark);
   position: fixed;
   z-index: 80;
   padding-left: 50px;
@@ -170,13 +172,13 @@ color: var(--c);
 }
 
 .navbar-toggler-icon{
-  color: var(--b);
+  color: var(--white);
 }
 
 /*----------fin navbar----------*/
 
 .transition-2{
-  color: var(--b);
+  color: var(--white);
 }
 .transition-2:hover{
   color: var(--c);
@@ -253,11 +255,11 @@ color: var(--light);
 }
 
 .n-color-3{
-  color: var(--c);
+  color: var(--white);
 }
 
 .n-color-3:hover{
-  color: var(--gray);
+  color: var(--c);
 }
 
 .n-color-4{
@@ -301,7 +303,7 @@ color: var(--light);
 /* footer */
 .footer{
   color: var(--light);
-  background-color: var(--footer);
+  background-color: var(--blueDark);
   padding: 20px 0;
   width: 100%;
   position: absolute;
@@ -321,11 +323,10 @@ div a{
 /* btn acceso */
 
 .button-8 {
-  background-color: #e1ecf4;
+  background-color: var(--blueDark);
   border-radius: 3px;
-  border: 1px solid #7aa7c7;
-  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
-  color: #39739d;
+  border: 1px solid --blueDark;
+  color: var(--white);
   cursor: pointer;
   font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
   font-size: 13px;
