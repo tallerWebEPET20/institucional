@@ -1,0 +1,355 @@
+/* https://paletasdecolores.com/paleta-de-colores-2326/ */
+:root{
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #f1f1f0;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --b:#f1f1f0;
+  --footer:#5e83ba;
+  --cyanPastel:#2BF2F5;
+  --c:#BFE9FF;
+  --font:#091d36;
+  --font-show:#3F7896;
+  --danger2:#FF0000;
+  --main-white-color: white;
+--main-black-color: black;
+}
+
+* {
+  padding: 0;
+  margin: 0; 
+}
+
+body{
+  height: 100vh;
+  font-family: Arial; font-size: 15px; sans-serif; background:#f4f4f4;
+}
+
+/* Modal base */
+.custom-modal {
+  display:none; 
+  position:fixed; 
+  z-index:2000; 
+  left:0; 
+  top:0; 
+  width:100%; 
+  height:100%; 
+  background:rgba(0,0,0,0.7); 
+  justify-content:center; 
+  align-items:center; 
+}
+
+.modal-box {
+  background:#fff; 
+  padding:20px; 
+  border-radius:12px; 
+  max-width:500px; 
+  width:100%; 
+  text-align:center; 
+  box-shadow:0 5px 15px rgba(0,0,0,0.3); 
+}
+
+.btn-ok { 
+  background:#007bff; 
+  color:#fff; 
+  border:none; 
+  padding:8px 16px; 
+  border-radius:8px; 
+  cursor:pointer; 
+}
+
+.btn-ok:hover { 
+  background:#0056b3; 
+}
+
+/* Imagen en pantalla completa */
+
+#avisoModal.imagen-activa .modal-box { 
+  background:transparent; 
+  box-shadow:none; 
+  padding:0; 
+  max-width:90%; 
+  max-height:90%; 
+}
+
+#avisoModal.imagen-activa img { 
+  max-width:100%; 
+  max-height:100%; 
+  border-radius:12px; 
+  display:block; 
+  margin:auto; 
+}
+
+#avisoModal.imagen-activa .btn-cerrar-img { 
+  position:absolute; 
+  top:20px; 
+  right:20px; 
+  background:rgba(0,0,0,0.7); 
+  color:#fff; 
+  border:none; 
+  padding:10px 15px; 
+  border-radius:8px; 
+  cursor:pointer; 
+  font-size:16px; 
+}
+
+#avisoModal.imagen-activa .btn-cerrar-img:hover { 
+  background:rgba(0,0,0,0.9); 
+}
+
+/* Zona fija arriba para botón Admin y Logout */
+.admin-bar { 
+  position:sticky; 
+  top:0; 
+  z-index:1030; 
+  background:#fff; 
+  padding:6px 8px; 
+  box-shadow:0 2px 4px rgba(0,0,0,0.06); 
+}
+
+/* fin modal base*/
+
+.actived:hover{
+color: var(--cyan);
+}
+
+.n-color{
+color: var(--b);
+}
+
+.n-color:hover{
+color: var(--c);
+}
+
+.espacio{
+  background-color: var(--b);
+}
+
+
+
+/*----------navbar----------*/
+.container-fluid{
+  display: flex;
+}
+
+.navbar-expand-lg{
+  background-color: var(--dark);
+  padding: 12px;
+}
+
+.navbar{
+  background-color: var(--font);
+  position: fixed;
+  z-index: 80;
+  padding-left: 50px;
+  right: 0;
+  left: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 5px black; 
+}
+
+.navbar:hover{
+  color: var(--white);
+}
+
+.navbar-toggler-icon{
+  color: var(--b);
+}
+
+/*----------fin navbar----------*/
+
+.transition-2{
+  color: var(--b);
+}
+.transition-2:hover{
+  color: var(--c);
+}
+
+section {
+display: none;
+}
+
+.colorParrafo{
+  text-shadow: 3px 3px 2px black;
+  color: var(--main-white-color);
+}
+
+
+.cyan-color{
+color: #17a2b8;
+}
+
+.cyan-color:hover{
+color: #6c757d;
+}
+
+.btn-outline-light:hover{
+color: var(--blue);
+}
+
+.instagram:hover{
+background: linear-gradient(70deg,#6f42c1, #ffc107);
+color: var(--white);
+
+}
+
+.twiter:hover{
+color: cyan;
+}
+
+
+.colorRedes{
+color: var(--light);
+}
+
+.colorRedes:hover{
+  color: #FFCAF6;
+}
+
+
+
+.cyan-color{
+  color: var(--info);
+  text-shadow: 3px 3px 2px black;
+ 
+}
+
+.cyan-color:hover{
+  color: var(--light);
+}
+
+.bg-transparente{
+  background-color: transparent;
+  color: var(--dark);
+  box-shadow: 0px 2px 5px transparent; 
+
+}
+
+.n-color-2{
+  color: var(--font);
+  text-shadow: 1px 1px 1px black;
+}
+
+.actived-2{
+  color: var(--dark);
+  text-shadow: 1px 1px 2px black;
+}
+
+.n-color-3{
+  color: var(--c);
+}
+
+.n-color-3:hover{
+  color: var(--gray);
+}
+
+.n-color-4{
+  text-shadow: 1px 1px 2px black;
+  color: var(--danger);
+}
+
+.btn-color-4{
+  color: var(--danger2);
+  border-color: var(--danger2);
+}
+
+.btn-color-4:hover{
+  color: var(--light);
+  border-color: var(--light);
+  background-color: var(--danger);
+}
+
+@media(max-width: 990px){
+
+
+.bg-transparente{
+  background-color: var(--font);
+  color: var(--dark);
+  box-shadow: none; 
+
+}
+
+.n-color-2{
+  color: var(--light);
+  text-shadow: none;
+}
+
+.actived-2{
+  color: var(--c);
+  text-shadow: none;
+}
+
+}/*fin media*/
+
+/* footer */
+.footer{
+  color: var(--light);
+  background-color: var(--footer);
+  padding: 20px 0;
+  width: 100%;
+  position: absolute;
+}
+
+div a{
+  text-decoration: none;
+}
+
+.footerConteiner{
+  display: flex;
+  justify-content: space-around;
+}
+
+/* fin footer*/
+
+/* btn acceso */
+
+.button-8 {
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  color: #39739d;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 8px .8em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button-8:hover,
+.button-8:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.button-8:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.button-8:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
+
+/* fin btn acceso */
+
