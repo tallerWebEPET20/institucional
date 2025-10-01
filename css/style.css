@@ -180,7 +180,8 @@ color: var(--c);
   border: var(--dark);
 }
 
-.n-color-3,.dropdown-item{
+
+.n-color-3, .dropdown-item{
   color: var(--white);
 }
 
@@ -188,15 +189,24 @@ color: var(--c);
   color: var(--c);
 }
 
+/* Cuando el menú desplegable está abierto, mantiene el mismo estilo */
+.nav-link:focus,.nav-link:focus-visible, .nav-link:active{
+  color: var(--c) !important;
+  background-color: transparent !important;       
+}
+.navbar .nav-item.dropdown.show > .nav-link.n-color-3 {
+    color: var(--c) !important;          /* hereda el color definido por .n-color-3 */
+    background-color: transparent !important;
+}
+
 /* btn acceso */
 /* CSS */
 .button-8 {
   background-color: var(--blueDark);
   border-radius: 3px;
-  border: 1px solid --dark;
-  box-shadow: --white 0 1px 0 0 inset;
+  border: 1px solid var(--blueDark);
   box-sizing: border-box;
-  color: var(--white);
+  color: var(--c);
   cursor: pointer;
   display: inline-block;
   font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
@@ -220,16 +230,6 @@ color: var(--c);
 .button-8:focus {
   background-color: var(--c);
   color: var(--blueDark);
-}
-
-.button-8:focus {
-  box-shadow: 0 0 0 4px --c;
-}
-
-.button-8:active {
-  background-color: --c;
-  box-shadow: none;
-  color: var(--blue);
 }
 
 /* fin btn acceso */
