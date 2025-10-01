@@ -324,7 +324,7 @@ div a{
 }
 
 .colorRedes:hover, .linkFoot:hover{
-  color: var(--blue);
+  color: var(--c);
 }
 
 .linkFoot{
