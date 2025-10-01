@@ -128,10 +128,6 @@ body{
 
 /* fin modal base*/
 
-.actived:hover{
-color: var(--cyan);
-}
-
 .n-color{
 color: var(--white);
 }
@@ -144,7 +140,15 @@ color: var(--c);
   background-color: var(--white);
 }
 
+.n-color-2{
+  color: var(--font);
+  text-shadow: 1px 1px 1px black;
+}
 
+.n-color-4{
+  text-shadow: 1px 1px 2px black;
+  color: var(--danger);
+}
 
 /*----------navbar----------*/
 .container-fluid{
@@ -171,9 +175,64 @@ color: var(--c);
   color: var(--white);
 }
 
-.navbar-toggler-icon{
+.dropdown-menu{
+  background-color: var(--dark);
+  border: var(--dark);
+}
+
+.n-color-3,.dropdown-item{
   color: var(--white);
 }
+
+.n-color-3:hover{
+  color: var(--c);
+}
+
+/* btn acceso */
+/* CSS */
+.button-8 {
+  background-color: var(--blueDark);
+  border-radius: 3px;
+  border: 1px solid --dark;
+  box-shadow: --white 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: var(--white);
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.button-8:hover,
+.button-8:focus {
+  background-color: var(--c);
+  color: var(--blueDark);
+}
+
+.button-8:focus {
+  box-shadow: 0 0 0 4px --c;
+}
+
+.button-8:active {
+  background-color: --c;
+  box-shadow: none;
+  color: var(--blue);
+}
+
+/* fin btn acceso */
 
 /*----------fin navbar----------*/
 
@@ -244,28 +303,7 @@ color: var(--light);
 
 }
 
-.n-color-2{
-  color: var(--font);
-  text-shadow: 1px 1px 1px black;
-}
 
-.actived-2{
-  color: var(--dark);
-  text-shadow: 1px 1px 2px black;
-}
-
-.n-color-3{
-  color: var(--white);
-}
-
-.n-color-3:hover{
-  color: var(--c);
-}
-
-.n-color-4{
-  text-shadow: 1px 1px 2px black;
-  color: var(--danger);
-}
 
 .btn-color-4{
   color: var(--danger2);
@@ -304,7 +342,7 @@ color: var(--light);
 .footer{
   color: var(--light);
   background-color: var(--blueDark);
-  padding: 20px 0;
+  /* padding: 20px 0; */
   width: 100%;
   position: absolute;
 }
@@ -313,44 +351,12 @@ div a{
   text-decoration: none;
 }
 
-.footerConteiner{
+/* .footerConteiner{
   display: flex;
   justify-content: space-around;
-}
+} */
 
 /* fin footer*/
 
-/* btn acceso */
 
-.button-8 {
-  background-color: var(--blueDark);
-  border-radius: 3px;
-  border: 1px solid --blueDark;
-  color: var(--white);
-  cursor: pointer;
-  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  padding: 8px;
-  text-align: center;
-  text-decoration: none;
-}
-
-.button-8:hover,
-.button-8:focus {
-  background-color: #b3d3ea;
-  color: #2c5777;
-}
-
-.button-8:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
-}
-
-.button-8:active {
-  background-color: #a0c7e4;
-  box-shadow: none;
-  color: #2c5777;
-}
-
-/* fin btn acceso */
 
