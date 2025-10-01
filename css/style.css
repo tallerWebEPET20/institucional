@@ -265,24 +265,8 @@ color: #6c757d;
 color: var(--blue);
 }
 
-.instagram:hover{
-background: linear-gradient(70deg,#6f42c1, #ffc107);
-color: var(--white);
-
-}
-
-.twiter:hover{
-color: cyan;
-}
 
 
-.colorRedes{
-color: var(--light);
-}
-
-.colorRedes:hover{
-  color: #FFCAF6;
-}
 
 
 
@@ -302,8 +286,6 @@ color: var(--light);
   box-shadow: 0px 2px 5px transparent; 
 
 }
-
-
 
 .btn-color-4{
   color: var(--danger2);
@@ -340,9 +322,9 @@ color: var(--light);
 
 /* footer */
 .footer{
-  color: var(--light);
+  color: var(--white);
   background-color: var(--blueDark);
-  /* padding: 20px 0; */
+  padding: 10px 0;
   width: 100%;
   position: absolute;
 }
@@ -351,10 +333,36 @@ div a{
   text-decoration: none;
 }
 
-/* .footerConteiner{
+.footerConteiner{
   display: flex;
   justify-content: space-around;
-} */
+} 
+
+.colorRedes{
+  color: var(--white);
+}
+
+.colorRedes:hover, .linkFoot:hover{
+  color: var(--blue);
+}
+
+.linkFoot{
+  text-decoration: none;
+  color: var(--white);
+}
+
+div p{
+  margin: 10px 0;
+}
+
+#redes{
+  display: flex;
+  align-items: center;
+}
+
+a svg{
+  margin: 0 10px;
+}
 
 /* fin footer*/
 
