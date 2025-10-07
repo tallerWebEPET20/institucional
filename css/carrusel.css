@@ -73,3 +73,20 @@ html, body {
   .slide__content{max-width:90%; padding:2rem;}
 }
 
+
+
+/* Método recomendado: truncado con puntos suspensivos (evita por completo el desborde) */
+.slide__desc {
+  margin: 0;
+  display: -webkit-box;        /* necesario para -webkit-line-clamp */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;      /* <--- mostrar hasta 4 líneas (ajustá si querés más/menos) */
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* mejoras para quiebre de palabras largas */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
