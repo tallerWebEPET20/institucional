@@ -1,135 +1,95 @@
+<?php
+$conn = mysqli_connect("localhost","root","","institucional");
+if (!$conn) { die("Error conexión: " . mysqli_connect_error()); }
+$avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
+?>
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Carrusel Responsive Centrado</title>
-  <link rel="stylesheet" href="css/carrusel.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/carrusel.css">
   </head>
-<body>
+  <body>
 
-  <section class="carousel" aria-label="Carrusel de imágenes">
+  <!-- Carrusel -->
+  <section class="carousel" id="carousel" aria-label="Carrusel de imágenes">
     <div class="slides" id="slides">
-      <!-- Slide 1 -->
-      <article class="slide">
-        <picture>
-          <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=2000&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1000&auto=format&fit=crop" alt="Montañas al atardecer">
-        </picture>
-        <div class="slide__content">
-          <h3 class="slide__title">Atardecer en las montañas</h3>
-          <p class="slide__desc">La calma de la naturaleza en su máximo esplendor.</p>
-        </div>
-      </article>
-
-      <!-- Slide 2 -->
-      <article class="slide">
-        <picture>
-          <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=2000&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1000&auto=format&fit=crop" alt="Luces de la ciudad">
-        </picture>
-        <div class="slide__content">
-          <h3 class="slide__title">Luces de la ciudad</h3>
-          <p class="slide__desc">El ritmo urbano que nunca se detiene.</p>
-        </div>
-      </article>
-
-      <!-- Slide 3 -->
-      <article class="slide">
-        <picture>
-          <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2000&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1000&auto=format&fit=crop" alt="Playa y olas">
-        </picture>
-        <div class="slide__content">
-          <h3 class="slide__title">Brisa marina</h3>
-          <p class="slide__desc">El sonido del mar como banda sonora de tus días.</p>
-        </div>
-      </article>
-
-      <!-- Slide 4 -->
-      <article class="slide">
-        <picture>
-          <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop" alt="Bosque entre nieblas">
-        </picture>
-        <div class="slide__content">
-          <h3 class="slide__title">Bosque entre nieblas</h3>
-          <p class="slide__desc">Explora la magia escondida en cada sendero.</p>
-        </div>
-      </article>
-
-      <!-- Slide 5 -->
-      <article class="slide">
-        <picture>
-          <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2000&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1000&auto=format&fit=crop" alt="Camino rural">
-        </picture>
-        <div class="slide__content">
-          <h3 class="slide__title">Camino rural</h3>
-          <p class="slide__desc">El placer de avanzar sin prisa, rodeado de verde.</p>
-        </div>
-      </article>
+      <?php
+        $hasAny = false;
+        while ($fila = mysqli_fetch_assoc($avisos)) {
+          $hasAny = true;
+          $img_desktop = !empty($fila['img_desktop']) ? htmlspecialchars($fila['img_desktop']) : 'https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=2000&auto=format&fit=crop';
+          $img_mobile  = !empty($fila['img_mobile'])  ? htmlspecialchars($fila['img_mobile'])  : 'https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1000&auto=format&fit=crop';
+          $titulo = htmlspecialchars($fila['titulo']);
+          $contenido = htmlspecialchars($fila['contenido']);
+      ?>
+        <article class="slide" role="group" aria-roledescription="slide">
+          <picture>
+            <source media="(min-width:1024px)" srcset="<?= $img_desktop ?>">
+            <img src="<?= $img_mobile ?>" alt="<?= $titulo ?>">
+          </picture>
+          <div class="slide__content">
+            <h3 class="slide__title"><?= $titulo ?></h3>
+            <p class="slide__desc"><?= $contenido ?></p>
+          </div>
+        </article>
+      <?php } ?>
+      <?php if (!$hasAny) { ?>
+        <article class="slide">
+          <picture>
+            <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=2000&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1000&auto=format&fit=crop" alt="Imagen por defecto">
+          </picture>
+          <div class="slide__content">
+            <h3 class="slide__title">No hay avisos</h3>
+            <p class="slide__desc">Todavía no hay avisos cargados en la base de datos.</p>
+          </div>
+        </article>
+      <?php } ?>
     </div>
 
-    <!-- Flechas -->
-    <button class="carousel__arrow carousel__arrow--prev" id="prev">&#9664;</button>
-    <button class="carousel__arrow carousel__arrow--next" id="next">&#9654;</button>
-
-    <!-- Dots -->
-    <div class="carousel__dots" id="dots"></div>
+    <button class="carousel__arrow carousel__arrow--prev" id="prev" aria-label="Anterior">&#9664;</button>
+    <button class="carousel__arrow carousel__arrow--next" id="next" aria-label="Siguiente">&#9654;</button>
+    <div class="carousel__dots" id="dots" role="tablist" aria-hidden="false"></div>
   </section>
 
-  <script>
-  (function(){
-    const slidesEl = document.getElementById('slides');
-    const slides = Array.from(slidesEl.children);
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const dotsEl = document.getElementById('dots');
-    let index = 0;
-    const total = slides.length;
-    const autoplayDelay = 4500;
-    let autoplayTimer;
+  <!-- Main -->
+  <main id="mainInfo" role="main" aria-labelledby="mainTitle">
+    <div class="intro">
+      <h2 id="mainTitle">Instituto de Educación Técnica Nº 20</h2>
+      <p>Somos una institución comprometida con la formación técnica y profesional.</p>
+    </div>
+    <div class="cards" aria-live="polite">
+      <article class="card" role="region" aria-labelledby="misionTitle">
+        <h3 id="misionTitle">Misión</h3>
+        <p>Formar recursos humanos con capacidades técnicas y éticas, preparados para insertarse en el mundo productivo y académico.</p>
+      </article>
+      <article class="card" role="region" aria-labelledby="visionTitle">
+        <h3 id="visionTitle">Visión</h3>
+        <p>Ser referentes regionales en educación técnica, promoviendo la innovación y el desarrollo sustentable.</p>
+      </article>
+      <article class="card" role="region" aria-labelledby="valoresTitle">
+        <h3 id="valoresTitle">Valores</h3>
+        <p>Responsabilidad, trabajo en equipo, creatividad y compromiso con la comunidad.</p>
+      </article>
+    </div>
+  </main>
 
-    // crear puntos
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'dot';
-      dot.setAttribute('data-index', i);
-      dotsEl.appendChild(dot);
-    });
-    const dots = Array.from(dotsEl.children);
+  <!-- Footer -->
+  <footer id="siteFooter" role="contentinfo">
+    <div class="footer-inner">
+      <div class="contact" aria-label="Información de contacto">
+        <div><strong>Dirección</strong><div class="small">Av. Ejemplo 123, Ciudad</div></div>
+        <div><strong>Teléfono</strong><div class="small">+54 9 11 1234 5678</div></div>
+        <div><strong>Email</strong><div class="small"><a href="mailto:info@instituto.edu">info@instituto.edu</a></div></div>
+      </div>
+      <div class="small" style="margin-top:1rem;">© <?= date('Y') ?> Instituto de Educación Técnica Nº 20 — Todos los derechos reservados</div>
+    </div>
+  </footer>
 
-    function updateUI(){
-      slidesEl.style.transform = `translateX(-${index * 100}%)`;
-      dots.forEach((d,i)=>d.classList.toggle('active', i===index));
-    }
+  <script src="js/carrusel.js"></script>
 
-    function showNext(){ index = (index + 1) % total; updateUI(); }
-    function showPrev(){ index = (index - 1 + total) % total; updateUI(); }
-
-    nextBtn.onclick = () => { showNext(); resetAutoplay(); };
-    prevBtn.onclick = () => { showPrev(); resetAutoplay(); };
-    dots.forEach(dot => dot.onclick = e => {
-      index = Number(e.target.dataset.index);
-      updateUI();
-      resetAutoplay();
-    });
-
-    function startAutoplay(){
-      autoplayTimer = setInterval(showNext, autoplayDelay);
-    }
-    function resetAutoplay(){
-      clearInterval(autoplayTimer);
-      startAutoplay();
-    }
-
-    slidesEl.addEventListener('mouseenter', ()=>clearInterval(autoplayTimer));
-    slidesEl.addEventListener('mouseleave', startAutoplay);
-
-    updateUI();
-    startAutoplay();
-  })();
-  </script>
-</body>
+  </body>
 </html>
