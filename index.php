@@ -165,8 +165,9 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
 
   <!-- Main -->
   <main id="mainInfo" role="main" aria-labelledby="mainTitle">
+
     <div class="intro">
-      <h2 id="mainTitle">Instituto de Educación Técnica Nº 20</h2>
+      <h2 id="mainTitle">Escuela Provincial de Educación Técnica Nº 20</h2>
       <p>Somos una institución comprometida con la formación técnica y profesional.</p>
     </div>
     <div class="cards" aria-live="polite">
@@ -183,19 +184,35 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
         <p>Responsabilidad, trabajo en equipo, creatividad y compromiso con la comunidad.</p>
       </article>
     </div>
+
   </main>
 
   <!-- Footer -->
   <footer id="siteFooter" role="contentinfo">
     <div class="footer-inner">
       <div class="contact" aria-label="Información de contacto">
-        <div><strong>Dirección</strong><div class="small">Av. Ejemplo 123, Ciudad</div></div>
-        <div><strong>Teléfono</strong><div class="small">+54 9 11 1234 5678</div></div>
-        <div><strong>Email</strong><div class="small"><a href="mailto:info@instituto.edu">info@instituto.edu</a></div></div>
+        <div>
+          <strong>Dirección</strong>
+          <div class="small">
+            <a class="enlace" href="https://maps.app.goo.gl/7r9AdiSzANaFCoyT9" target="_blank">Neuquén, Lanin 2020</a>
+          </div>
+        </div>
+        <div>
+          <strong>Teléfono</strong>
+          <div class="small">(299) 447-8052</div>
+        </div>
+        <div>
+          <strong>Email</strong>
+          <div class="small">
+            <a class="enlace" href="mailto:epet020@neuquen.edu.ar">epet020@neuquen.edu.ar</a>
+          </div>
+        </div>
       </div>
       <div class="small" style="margin-top:1rem;">© <?= date('Y') ?> Instituto de Educación Técnica Nº 20 — Todos los derechos reservados</div>
     </div>
   </footer>
+
+  <!--Fin footer-->
 
   <!-- Inicio LOGIN-->
 
