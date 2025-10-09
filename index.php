@@ -17,9 +17,9 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     
     <!-- Tu CSS -->
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/carrusel.css">
-
+    <link rel="stylesheet" href="css/style.css">
+    
     <style>
         /* Modal base */
         .custom-modal { display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; }
@@ -56,10 +56,14 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
             Estudiantes
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="https://drive.google.com/drive/u/0/folders/14ZKnbClO4u6owrsoIQl_7Df9rJZWzeA4">Cuadernillos 2025</a></li>
+            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1Ivw5xQGpYSQ8k8avcprrLHbtYpDQa-Fs">Cuadernillo ingresantes 2025</a></li>
+            <li><a class="dropdown-item" href="https://drive.google.com/file/d/1fot8S-KTKCtPb2BJoLwcMcuCrr15q5iB/view">Horarios clases de consulta</a></li>
+            <li><a class="dropdown-item" href="documentos.html">Documentación estudiantes</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/176F8SI_AKii_QPk0ZEPOqIwVLWGL5b-t">Programas previos/libres/equivalentes</a></li>
+            <li><a class="dropdown-item" href="https://drive.google.com/drive/u/0/folders/1gRXFqzjgzXU1VftigoT4Oocil5__rprR">Programas 2020</a></li>
+            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1YRqfjHC2foMAHvoHTfznL7h5JPopRoYR">Fortalecimiento Oct. 2025</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -67,15 +71,16 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
             Docentes
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1yYFvkvTZolkhj7nEc3YOymVOEFvXYbhb">Preceptores por curso</a></li>
+            <li><a class="dropdown-item" href="#">Documentación docentes</a></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Biblioteca</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Biblioteca
+            Institución
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -83,9 +88,6 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Institucion</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -124,7 +126,7 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
         $hasAny = false;
         while ($fila = mysqli_fetch_assoc($avisos)) {
           $hasAny = true;
-          $img_desktop = !empty($fila['img_desktop']) ? htmlspecialchars($fila['img_desktop']) : 'https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=2000&auto=format&fit=crop';
+          $img_desktop = !empty($fila['img_desktop']) ? htmlspecialchars($fila['img_desktop']) : 'img\fondo.jpg';
           $img_mobile  = !empty($fila['img_mobile'])  ? htmlspecialchars($fila['img_mobile'])  : 'https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1000&auto=format&fit=crop';
           $titulo = htmlspecialchars($fila['titulo']);
           $contenido = htmlspecialchars($fila['contenido']);
@@ -143,8 +145,8 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
       <?php if (!$hasAny) { ?>
         <article class="slide">
           <picture>
-            <source media="(min-width:1024px)" srcset="https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=2000&auto=format&fit=crop">
-            <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1000&auto=format&fit=crop" alt="Imagen por defecto">
+            <source media="(min-width:1024px)" srcset="img\fondo.jpg">
+            <img src="img\fondo.jpg" alt="Imagen por defecto">
           </picture>
           <div class="slide__content">
             <h3 class="slide__title">No hay avisos</h3>
@@ -168,20 +170,34 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
 
     <div class="intro">
       <h2 id="mainTitle">Escuela Provincial de Educación Técnica Nº 20</h2>
-      <p>Somos una institución comprometida con la formación técnica y profesional.</p>
+      <p>
+        La Escuela Provincial de Educación Técnica Nº 20 de Neuquén es un establecimiento de formación técnica de vanguardia, con modernas instalaciones, talleres y laboratorios, dedicado a formar Técnicos en Programación capaces de diseñar, desarrollar y gestionar soluciones informáticas, con compromiso social, capacidades analíticas, creativas y éticas.
+      </p>
     </div>
     <div class="cards" aria-live="polite">
       <article class="card" role="region" aria-labelledby="misionTitle">
         <h3 id="misionTitle">Misión</h3>
-        <p>Formar recursos humanos con capacidades técnicas y éticas, preparados para insertarse en el mundo productivo y académico.</p>
+        <p>
+          Formar profesionales técnicos en programación que integren conocimientos científicos, metodológicos y tecnológicos, desarrollando habilidades prácticas y pensamiento crítico, para resolver problemas reales, innovar y contribuir al desarrollo productivo y social de la comunidad de Neuquén y del país.
+        </p>
       </article>
       <article class="card" role="region" aria-labelledby="visionTitle">
         <h3 id="visionTitle">Visión</h3>
-        <p>Ser referentes regionales en educación técnica, promoviendo la innovación y el desarrollo sustentable.</p>
+        <p>
+          Ser reconocida como una institución educativa líder en tecnología y programación, que inspire excelencia, innovación y adaptabilidad, formando técnicos competentes, comprometidos con los valores éticos y ciudadanos, preparados para afrontar los desafíos del presente y futuro digital.
+        </p>
       </article>
       <article class="card" role="region" aria-labelledby="valoresTitle">
         <h3 id="valoresTitle">Valores</h3>
-        <p>Responsabilidad, trabajo en equipo, creatividad y compromiso con la comunidad.</p>
+        <p>
+          <ul>
+            <li>Responsabilidad: comprometernos con nuestros deberes académicos, profesionales y sociales.</li>
+            <li>Innovación: incentivar la creatividad, el aprendizaje continuo y la adopción de nuevas tecnologías.</li>
+            <li>Trabajo en equipo: colaborar entre alumnos, docentes y comunidad para lograr objetivos comunes.</li>
+            <li>Respeto: hacia los otros, hacia las normas, la diversidad y el entorno físico y digital.</li>
+            <li>Ética e integridad: actuar con honestidad, transparencia y coherencia en todas las acciones.</li>
+          </ul>
+        </p>
       </article>
     </div>
 
@@ -208,7 +224,7 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
           </div>
         </div>
       </div>
-      <div class="small" style="margin-top:1rem;">© <?= date('Y') ?> Instituto de Educación Técnica Nº 20 — Todos los derechos reservados</div>
+      <div class="small" style="margin-top:1rem;">© <?= date('Y') ?> E.P.E.T Nº 20 — Todos los derechos reservados</div>
     </div>
   </footer>
 
@@ -217,11 +233,11 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
   <!-- Inicio LOGIN-->
 
   <!-- Modal Login -->
-  <div id="loginModal" class="custom-modal">
+  <!-- <div id="loginModal" class="custom-modal">
     <div class="modal-box">
-      <h4>Acceso Administrador</h4>
+      <h4>Acceso Administrador</h4> -->
       <!-- Form: ahora hace POST al mismo archivo -->
-      <form method="POST" action="">
+      <!-- <form method="POST" action="">
         <input type="hidden" name="accion" value="login">
         <input type="text" name="usuario" placeholder="Usuario" class="form-control mb-2" required>
         <input type="password" name="password" placeholder="Contraseña" class="form-control mb-2" required>
@@ -229,10 +245,10 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
         <button type="button" class="btn btn-secondary" onclick="cerrarLogin()">Cancelar</button>
       </form>
     </div>
-  </div>
+  </div> -->
 
   <!-- Modal Acceso (publicar novedad) -->
-  <div id="accesoModal" class="custom-modal">
+  <!-- <div id="accesoModal" class="custom-modal">
     <div class="modal-box">
       <h4>Publicar Novedad</h4>
       <textarea id="mensaje" class="form-control mb-2" placeholder="Escribe un mensaje..."></textarea>
@@ -245,10 +261,10 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
       </div>
       <div class="form-text mt-2">Esta edición afecta lo que ve el público al entrar al sitio.</div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Modal Aviso Público -->
-  <div id="avisoModal" class="custom-modal">
+  <!-- <div id="avisoModal" class="custom-modal">
     <div class="modal-box" id="avisoBox">
       <h4 id="avisoTitulo">Aviso Importante</h4>
       <p id="avisoTexto"></p>
@@ -256,14 +272,14 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
         <button class="btn-ok" onclick="cerrarAviso()">Cerrar</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- FIN LOGIN-->
 
   <script src="js/carrusel.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   
-<script>
+<!-- <script>
 //login
   window.__ADMIN_LOGGED__ = false;
     window.__LOGIN_ERROR__  = null;
@@ -353,6 +369,6 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
       }
     }
 
-  </script>
+  </script> -->
         
 </html>
