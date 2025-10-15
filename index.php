@@ -83,28 +83,19 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
             Institución
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Taller
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="autoridades.html">Autoridades</a></li>
+            <li><a class="dropdown-item" href="asesoria.html">Asesoría</a></li>
+            <li><a class="dropdown-item" href="secretaria.html">Secretaría</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Ed. física</a>
+          <a class="nav-link" target="_blank" href="https://drive.google.com/drive/folders/1m52isQx2tvcDFPQyAYFKWYYGfNyDOkiQ">Taller</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ESI</a>
+          <a class="nav-link" target="_blank" href="https://drive.google.com/drive/u/0/folders/1U1wsIHT1J_9szuHrpPf9YePeE_DiGHWN">Ed. física</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target="_blank" href="https://drive.google.com/drive/u/0/folders/1A14Bjihlx9Xex8QW_s_qgIv5fD76GPOu">ESI</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true"></a>
