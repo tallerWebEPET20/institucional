@@ -33,7 +33,7 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5")
         #avisoModal.imagen-activa .btn-cerrar-img:hover { background:rgba(0,0,0,0.9); }
     </style>   
   </head>
-  <body onload="mostrarMensaje()" translate="no">
+  <body onload="mostrarMensaje()" translate="no" class="page-index">
 
   <!-- navbar -->
 
@@ -72,7 +72,7 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5")
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" target="_blank"  href="https://drive.google.com/drive/folders/1yYFvkvTZolkhj7nEc3YOymVOEFvXYbhb">Preceptores por curso</a></li>
-            <li><a class="dropdown-item" target="_blank"  href="#">Documentación docentes</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="docentes.html">Documentación docentes</a></li>
           </ul>
         </li>
         <li class="nav-item">

@@ -32,25 +32,91 @@ main{
     flex:1 0 auto;
     margin: 0 auto 0 auto;
     padding:3rem 1rem;
-    transform: translateY(18px);
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transition: transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s ease, visibility .01s linear .6s;
-    position:relative;
-    z-index:2;
+}
+/* ====== Footer ====== */
+footer{
+  flex-shrink:0;
+  padding:2rem 1rem;
+  text-align:center;
+  color:var(--muted);
+  background: rgba(5,10,20,0.8);
+  border-top:1px solid rgba(255,255,255,0.03);
 }
 
-main.visible{
-    transform:translateY(0);
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    transition-delay:0s;
+.footer-inner{
+  max-width:1000px; 
+  margin:0 auto; 
+  display:flex; 
+  gap:1rem; 
+  flex-direction:column; 
+  align-items:center;
 }
-.intro{text-align:center; margin-bottom:2rem;}
-.intro h2{font-size:1.8rem; margin-bottom:.5rem;}
-.intro p{color:var(--muted); max-width:900px; margin:0 auto;}
+.contact{
+  display:flex; 
+  gap:1rem; 
+  flex-wrap:wrap; 
+  justify-content:center;
+}
+
+/* REDEFINIR la variable usada por Bootstrap solo dentro del footer */
+footer#siteFooter {
+  --bs-link-color-rgb: 203, 213, 225; /* equivalente RGB de var(--muted) */
+  --bs-link-opacity: 1;
+}
+
+footer#siteFooter a{
+  text-decoration: none;
+}
+/* Si necesitás mayor contraste en hover */
+footer#siteFooter a:hover,
+footer#siteFooter a:focus {
+  color: var(--muted); /* reemplazo directo para hover si Bootstrap no lo maneja con variables */
+  text-decoration: underline;
+}
+
+/* --- Main y footer visibles por defecto --- */
+main,
+footer {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: none;
+}
+
+/* --- Para index, estado inicial oculto con animación --- */
+body.page-index main,
+body.page-index footer {
+  transform: translateY(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform .6s cubic-bezier(.2,.9,.2,1),
+              opacity .6s ease,
+              visibility .01s linear .6s;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Clase .visible para animación en index --- */
+body.page-index main.visible,
+body.page-index footer.visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.intro{
+  text-align:center; margin-bottom:2rem;
+}
+.intro h2{
+  font-size:1.8rem; margin-bottom:.5rem;
+}
+.intro p{
+  color:var(--muted); max-width:900px; margin:0 auto;
+}
 
 /*-----Cards-----*/
 .cards{
@@ -88,55 +154,9 @@ li {
   color: var(--muted);
 }
 
-/* ====== Footer ====== */
-footer{
-  flex-shrink:0;
-  padding:2rem 1rem;
-  text-align:center;
-  color:var(--muted);
-  background: rgba(5,10,20,0.8);
-  border-top:1px solid rgba(255,255,255,0.03);
-  transform:translateY(18px);
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition: transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s ease, visibility .01s linear .6s;
-  z-index:2;
-}
-footer.visible{
-  transform:translateY(0);
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-  transition-delay:0s;
-}
-.footer-inner{
-  max-width:1000px; 
-  margin:0 auto; 
-  display:flex; 
-  gap:1rem; 
-  flex-direction:column; 
-  align-items:center;
-}
-.contact{
-  display:flex; 
-  gap:1rem; 
-  flex-wrap:wrap; 
-  justify-content:center;
-}
 
-/* REDEFINIR la variable usada por Bootstrap solo dentro del footer */
-footer#siteFooter {
-  --bs-link-color-rgb: 203, 213, 225; /* equivalente RGB de var(--muted) */
-  --bs-link-opacity: 1;
-}
 
-footer#siteFooter a{
-  text-decoration: none;
-}
-/* Si necesitás mayor contraste en hover */
-footer#siteFooter a:hover,
-footer#siteFooter a:focus {
-  color: var(--muted); /* reemplazo directo para hover si Bootstrap no lo maneja con variables */
-  text-decoration: underline;
-}
+
+
+
+
