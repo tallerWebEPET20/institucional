@@ -1,7 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost","root","","institucional");
 if (!$conn) { die("Error conexión: " . mysqli_connect_error()); }
-$avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
+$avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5");
 ?>
 <!doctype html>
 <html lang="es">
@@ -56,14 +56,14 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
             Estudiantes
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://drive.google.com/drive/u/0/folders/14ZKnbClO4u6owrsoIQl_7Df9rJZWzeA4">Cuadernillos 2025</a></li>
-            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1Ivw5xQGpYSQ8k8avcprrLHbtYpDQa-Fs">Cuadernillo ingresantes 2025</a></li>
-            <li><a class="dropdown-item" href="https://drive.google.com/file/d/1fot8S-KTKCtPb2BJoLwcMcuCrr15q5iB/view">Horarios clases de consulta</a></li>
-            <li><a class="dropdown-item" href="documentos.html">Documentación estudiantes</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="https://drive.google.com/drive/u/0/folders/14ZKnbClO4u6owrsoIQl_7Df9rJZWzeA4">Cuadernillos 2025</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="https://drive.google.com/drive/folders/1Ivw5xQGpYSQ8k8avcprrLHbtYpDQa-Fs">Cuadernillo ingresantes 2025</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="https://drive.google.com/file/d/1fot8S-KTKCtPb2BJoLwcMcuCrr15q5iB/view">Horarios clases de consulta</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="documentos.html">Documentación estudiantes</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/176F8SI_AKii_QPk0ZEPOqIwVLWGL5b-t">Programas previos/libres/equivalentes</a></li>
-            <li><a class="dropdown-item" href="https://drive.google.com/drive/u/0/folders/1gRXFqzjgzXU1VftigoT4Oocil5__rprR">Programas 2020</a></li>
-            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1YRqfjHC2foMAHvoHTfznL7h5JPopRoYR">Fortalecimiento Oct. 2025</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="https://drive.google.com/drive/folders/176F8SI_AKii_QPk0ZEPOqIwVLWGL5b-t">Programas previos/libres/equivalentes</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="https://drive.google.com/drive/u/0/folders/1gRXFqzjgzXU1VftigoT4Oocil5__rprR">Programas 2020</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="https://drive.google.com/drive/folders/1YRqfjHC2foMAHvoHTfznL7h5JPopRoYR">Fortalecimiento Oct. 2025</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -71,12 +71,12 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
             Docentes
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://drive.google.com/drive/folders/1yYFvkvTZolkhj7nEc3YOymVOEFvXYbhb">Preceptores por curso</a></li>
-            <li><a class="dropdown-item" href="#">Documentación docentes</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="https://drive.google.com/drive/folders/1yYFvkvTZolkhj7nEc3YOymVOEFvXYbhb">Preceptores por curso</a></li>
+            <li><a class="dropdown-item" target="_blank"  href="#">Documentación docentes</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Biblioteca</a>
+          <a class="nav-link" href="biblioteca.html">Biblioteca</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -117,9 +117,11 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
         $hasAny = false;
         while ($fila = mysqli_fetch_assoc($avisos)) {
           $hasAny = true;
-          $img_desktop = !empty($fila['img_desktop']) ? htmlspecialchars($fila['img_desktop']) : 'img\fondo.jpg';
-          $img_mobile  = !empty($fila['img_mobile'])  ? htmlspecialchars($fila['img_mobile'])  : 'https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1000&auto=format&fit=crop';
+          $img_desktop = !empty($fila['img_desktop']) ? htmlspecialchars($fila['img_desktop']) : 'img/fondo.png';
+          $img_mobile  = !empty($fila['img_mobile'])  ? htmlspecialchars($fila['img_mobile'])  : 'img/fondo1.png';
           $titulo = htmlspecialchars($fila['titulo']);
+          $fecha= htmlspecialchars($fila['fecha']);
+          $fecha = date("d-m-y", strtotime($fecha));
           $contenido = htmlspecialchars($fila['contenido']);
       ?>
         <article class="slide" role="group" aria-roledescription="slide">
@@ -129,6 +131,7 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
           </picture>
           <div class="slide__content">
             <h3 class="slide__title"><?= $titulo ?></h3>
+            <p class="slide__desc">Fecha: <?= $fecha ?></p>
             <p class="slide__desc"><?= $contenido ?></p>
           </div>
         </article>
@@ -136,8 +139,8 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY id ASC");
       <?php if (!$hasAny) { ?>
         <article class="slide">
           <picture>
-            <source media="(min-width:1024px)" srcset="img\fondo.jpg">
-            <img src="img\fondo.jpg" alt="Imagen por defecto">
+            <source media="(min-width:1024px)" srcset="img/fondo.png">
+            <img src="img/fondo.png" alt="Imagen por defecto">
           </picture>
           <div class="slide__content">
             <h3 class="slide__title">No hay avisos</h3>
