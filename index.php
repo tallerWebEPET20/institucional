@@ -1,7 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost","root","","institucional");
 if (!$conn) { die("Error conexión: " . mysqli_connect_error()); }
-$avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5");
+$avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha    LIMIT 5");
 ?>
 <!doctype html>
 <html lang="es">
@@ -119,6 +119,7 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5")
           $hasAny = true;
           $img_desktop = !empty($fila['img_desktop']) ? htmlspecialchars($fila['img_desktop']) : 'img/fondo.png';
           $img_mobile  = !empty($fila['img_mobile'])  ? htmlspecialchars($fila['img_mobile'])  : 'img/fondo1.png';
+          
           $titulo = htmlspecialchars($fila['titulo']);
           $fecha= htmlspecialchars($fila['fecha']);
           $fecha = date("d-m-y", strtotime($fecha));
@@ -209,7 +210,8 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5")
         </div>
         <div>
           <strong>Teléfono</strong>
-          <div class="small">(299) 447-8052</div>
+          <div class="small">
+            <a class="enlace" href="tel:+5492994478052">(299) 447-8052 </a></div>
         </div>
         <div>
           <strong>Email</strong>
@@ -227,11 +229,10 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5")
   <!-- Inicio LOGIN-->
 
   <!-- Modal Login -->
-  <!-- <div id="loginModal" class="custom-modal">
+  <div id="loginModal" class="custom-modal">
     <div class="modal-box">
-      <h4>Acceso Administrador</h4> -->
-      <!-- Form: ahora hace POST al mismo archivo -->
-      <!-- <form method="POST" action="">
+      <h4>Acceso Administrador</h4>
+      <form method="POST" action="">
         <input type="hidden" name="accion" value="login">
         <input type="text" name="usuario" placeholder="Usuario" class="form-control mb-2" required>
         <input type="password" name="password" placeholder="Contraseña" class="form-control mb-2" required>
@@ -239,10 +240,10 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5")
         <button type="button" class="btn btn-secondary" onclick="cerrarLogin()">Cancelar</button>
       </form>
     </div>
-  </div> -->
+  </div>
 
   <!-- Modal Acceso (publicar novedad) -->
-  <!-- <div id="accesoModal" class="custom-modal">
+  <div id="accesoModal" class="custom-modal">
     <div class="modal-box">
       <h4>Publicar Novedad</h4>
       <textarea id="mensaje" class="form-control mb-2" placeholder="Escribe un mensaje..."></textarea>
@@ -255,10 +256,10 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5")
       </div>
       <div class="form-text mt-2">Esta edición afecta lo que ve el público al entrar al sitio.</div>
     </div>
-  </div> -->
+  </div>
 
   <!-- Modal Aviso Público -->
-  <!-- <div id="avisoModal" class="custom-modal">
+  <div id="avisoModal" class="custom-modal">
     <div class="modal-box" id="avisoBox">
       <h4 id="avisoTitulo">Aviso Importante</h4>
       <p id="avisoTexto"></p>
@@ -266,103 +267,11 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha DESC LIMIT 5")
         <button class="btn-ok" onclick="cerrarAviso()">Cerrar</button>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- FIN LOGIN-->
 
   <script src="js/carrusel.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-  
-<!-- <script>
-//login
-  window.__ADMIN_LOGGED__ = false;
-    window.__LOGIN_ERROR__  = null;
-
-  // Abrir / cerrar modales
-    function abrirLogin(){ document.getElementById('loginModal').style.display = 'flex'; }
-    function cerrarLogin(){ document.getElementById('loginModal').style.display = 'none'; }
-    function cerrarAcceso(){ document.getElementById('accesoModal').style.display = 'none'; }
-    function cerrarAviso(){ document.getElementById('avisoModal').style.display = 'none'; }
-
-    // Mostrar estado de login al cargar
-    (function(){
-      if (window.__LOGIN_ERROR__) {
-        abrirLogin();
-        setTimeout(() => alert(window.__LOGIN_ERROR__), 10);
-      }
-      if (window.__ADMIN_LOGGED__) {
-        // Abrir el modal de publicación para el admin que acaba de loguear
-        document.getElementById('accesoModal').style.display = 'flex';
-      }
-    })();
-
-    // Guardar novedad (texto o imagen) en localStorage
-    function guardarMensaje(){
-      const mensaje = document.getElementById('mensaje').value.trim();
-      const archivo = document.getElementById('archivo').files[0];
-
-      if (archivo) {
-        const reader = new FileReader();
-        reader.onload = function(e){
-          localStorage.setItem('mensajePublico', e.target.result);
-          localStorage.setItem('tipoMensaje', 'imagen');
-          alert('Imagen publicada con éxito.');
-        };
-        reader.readAsDataURL(archivo);
-      } else if (mensaje) {
-        localStorage.setItem('mensajePublico', mensaje);
-        localStorage.setItem('tipoMensaje', 'texto');
-        alert('Mensaje publicado con éxito.');
-      } else {
-        alert('Por favor ingresa un mensaje o selecciona una imagen.');
-      }
-    }
-
-    // Editar novedad (sólo texto rellena el textarea)
-    function editarMensaje(){
-      const tipo = localStorage.getItem('tipoMensaje');
-      const msg  = localStorage.getItem('mensajePublico');
-      if (!msg) { alert('No hay ninguna novedad publicada para editar.'); return; }
-      if (tipo === 'texto') {
-        document.getElementById('mensaje').value = msg;
-      } else if (tipo === 'imagen') {
-        alert('Actualmente hay una imagen publicada. Para reemplazarla, sube una nueva imagen y presiona "Guardar".');
-      }
-    }
-
-    // Eliminar novedad
-    function eliminarMensaje(){
-      localStorage.removeItem('mensajePublico');
-      localStorage.removeItem('tipoMensaje');
-      alert('La novedad fue eliminada y ya no se mostrará.');
-    }
-
-    // Mostrar novedad al entrar (público)
-    function mostrarMensaje(){
-      const msg  = localStorage.getItem('mensajePublico');
-      const tipo = localStorage.getItem('tipoMensaje');
-      if (msg) {
-        const avisoModal   = document.getElementById('avisoModal');
-        const avisoTexto   = document.getElementById('avisoTexto');
-        const avisoTitulo  = document.getElementById('avisoTitulo');
-        const avisoBotonera= document.getElementById('avisoBotonera');
-
-        if (tipo === 'imagen') {
-          avisoModal.classList.add('imagen-activa');
-          avisoTitulo.style.display = 'none';
-          avisoBotonera.innerHTML = '<button class="btn-cerrar-img" onclick="cerrarAviso()">X</button>' +
-                                    '<a class="btn btn-ok ms-2" target="_blank" href="'+ msg +'">Abrir en pestaña</a>';
-          avisoTexto.innerHTML = '<img src="'+ msg +'" alt="Aviso">';
-        } else {
-          avisoModal.classList.remove('imagen-activa');
-          avisoTitulo.style.display = 'block';
-          avisoBotonera.innerHTML = '<button class="btn-ok" onclick="cerrarAviso()">Cerrar</button>';
-          avisoTexto.textContent = msg;
-        }
-        avisoModal.style.display = 'flex';
-      }
-    }
-
-  </script> -->
-        
+  <script src="js/login.js"></script>
 </html>
