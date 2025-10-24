@@ -119,6 +119,24 @@ body.page-index footer.visible {
 }
 
 /*-----Cards-----*/
+/* Prueba de animacion */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+}
+.block{
+  animation: appear 1s linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+/* Prueba de animacion */
 .cards{
   display:grid; 
   grid-template-columns:1fr; 
@@ -153,10 +171,3 @@ body.page-index footer.visible {
 li {
   color: var(--muted);
 }
-
-
-
-
-
-
-

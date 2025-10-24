@@ -18,20 +18,7 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha    LIMIT 5");
     
     <!-- Tu CSS -->
     <link rel="stylesheet" href="css/carrusel.css">
-    <link rel="stylesheet" href="css/style.css">
-    
-    <style>
-        /* Modal base */
-        .custom-modal { display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; }
-        .modal-box { background:#fff; padding:20px; border-radius:12px; max-width:500px; width:100%; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.3); }
-        .btn-ok { background:#007bff; color:#fff; border:none; padding:8px 16px; border-radius:8px; cursor:pointer; }
-        .btn-ok:hover { background:#0056b3; }
-        /* Imagen en pantalla completa */
-        #avisoModal.imagen-activa .modal-box { background:transparent; box-shadow:none; padding:0; max-width:90%; max-height:90%; }
-        #avisoModal.imagen-activa img { max-width:100%; max-height:100%; border-radius:12px; display:block; margin:auto; }
-        #avisoModal.imagen-activa .btn-cerrar-img { position:absolute; top:20px; right:20px; background:rgba(0,0,0,0.7); color:#fff; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; font-size:16px; }
-        #avisoModal.imagen-activa .btn-cerrar-img:hover { background:rgba(0,0,0,0.9); }
-    </style>   
+    <link rel="stylesheet" href="css/style.css">   
   </head>
   <body onload="mostrarMensaje()" translate="no" class="page-index">
 
@@ -170,19 +157,24 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha    LIMIT 5");
       </p>
     </div>
     <div class="cards" aria-live="polite">
-      <article class="card" role="region" aria-labelledby="misionTitle">
+     <div class="block">
+       <article class="card" role="region" aria-labelledby="misionTitle">
         <h3 id="misionTitle">Misión</h3>
         <p>
-          Formar profesionales técnicos en programación que integren conocimientos científicos, metodológicos y tecnológicos, desarrollando habilidades prácticas y pensamiento crítico, para resolver problemas reales, innovar y contribuir al desarrollo productivo y social de la comunidad de Neuquén y del país.
+            Formar profesionales técnicos en programación que integren conocimientos científicos, metodológicos y tecnológicos, desarrollando habilidades prácticas y pensamiento crítico, para resolver problemas reales, innovar y contribuir al desarrollo productivo y social de la comunidad de Neuquén y del país.
         </p>
-      </article>
-      <article class="card" role="region" aria-labelledby="visionTitle">
-        <h3 id="visionTitle">Visión</h3>
-        <p>
-          Ser reconocida como una institución educativa líder en tecnología y programación, que inspire excelencia, innovación y adaptabilidad, formando técnicos competentes, comprometidos con los valores éticos y ciudadanos, preparados para afrontar los desafíos del presente y futuro digital.
-        </p>
-      </article>
-      <article class="card" role="region" aria-labelledby="valoresTitle">
+        </article>
+      </div>
+      <div class="block">
+        <article class="card" role="region" aria-labelledby="visionTitle">
+          <h3 id="visionTitle">Visión</h3>
+          <p>
+            Ser reconocida como una institución educativa líder en tecnología y programación, que inspire excelencia, innovación y adaptabilidad, formando técnicos competentes, comprometidos con los valores éticos y ciudadanos, preparados para afrontar los desafíos del presente y futuro digital.
+          </p>
+        </article>
+      </div>
+      <div class="block">
+        <article class="card" role="region" aria-labelledby="valoresTitle">
         <h3 id="valoresTitle">Valores</h3>
         <p>
           <ul>
@@ -194,7 +186,9 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha    LIMIT 5");
           </ul>
         </p>
       </article>
+      </div> 
     </div>
+
 
   </main>
 
@@ -226,52 +220,8 @@ $avisos = mysqli_query($conn, "SELECT * FROM aviso ORDER BY fecha    LIMIT 5");
 
   <!--Fin footer-->
 
-  <!-- Inicio LOGIN-->
-
-  <!-- Modal Login -->
-  <div id="loginModal" class="custom-modal">
-    <div class="modal-box">
-      <h4>Acceso Administrador</h4>
-      <form method="POST" action="">
-        <input type="hidden" name="accion" value="login">
-        <input type="text" name="usuario" placeholder="Usuario" class="form-control mb-2" required>
-        <input type="password" name="password" placeholder="Contraseña" class="form-control mb-2" required>
-        <button type="submit" class="btn btn-primary">Ingresar</button>
-        <button type="button" class="btn btn-secondary" onclick="cerrarLogin()">Cancelar</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Modal Acceso (publicar novedad) -->
-  <div id="accesoModal" class="custom-modal">
-    <div class="modal-box">
-      <h4>Publicar Novedad</h4>
-      <textarea id="mensaje" class="form-control mb-2" placeholder="Escribe un mensaje..."></textarea>
-      <input type="file" id="archivo" accept="image/*" class="form-control mb-3">
-      <div class="d-flex flex-wrap gap-2 justify-content-center">
-        <button type="button" class="btn btn-primary" onclick="guardarMensaje()">Guardar</button>
-        <button type="button" class="btn btn-warning" onclick="editarMensaje()">Editar</button>
-        <button type="button" class="btn btn-danger" onclick="eliminarMensaje()">Eliminar</button>
-        <button type="button" class="btn btn-secondary" onclick="cerrarAcceso()">Cerrar</button>
-      </div>
-      <div class="form-text mt-2">Esta edición afecta lo que ve el público al entrar al sitio.</div>
-    </div>
-  </div>
-
-  <!-- Modal Aviso Público -->
-  <div id="avisoModal" class="custom-modal">
-    <div class="modal-box" id="avisoBox">
-      <h4 id="avisoTitulo">Aviso Importante</h4>
-      <p id="avisoTexto"></p>
-      <div id="avisoBotonera" class="mt-3 d-flex justify-content-center">
-        <button class="btn-ok" onclick="cerrarAviso()">Cerrar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- FIN LOGIN-->
-
   <script src="js/carrusel.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <script src="js/login.js"></script>
+  
 </html>
